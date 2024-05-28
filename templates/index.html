@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Poison Classifier</title>
+    <link rel="stylesheet" href="static\style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Өсімдіктің улану деңгейін жіктеу үшін оның суретін жүктеңіз</h1>
+        <img src="" alt="Uploaded Image" id="uploaded-image">
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" id="file-input" value="Суретті таңдаңыз">
+            <br>
+            <input type="submit" value="Жүктеу">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('file-input').addEventListener('change', function() {
+            var file = this.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    var img = document.getElementById('uploaded-image');
+                    img.src = event.target.result;
+                    img.style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
